@@ -1,7 +1,11 @@
+import streamlit as st
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 from pandas.plotting import register_matplotlib_converters
+
+st.title("Time-Series-Visualizer")
+st.write("Visualizing time series data using Matplotlib and Seaborn.")
 
 register_matplotlib_converters()
 
@@ -82,3 +86,20 @@ def draw_box_plot():
     # Save image and return fig (don't change this part)
     fig.savefig('box_plot.png')
     return fig
+
+
+# drawing in streamlit
+
+st.header("Daily Page Views (Line Plot)")
+fig_line = draw_line_plot() 
+st.pyplot(fig_line)         
+
+# 2. Draw Bar Plot
+st.header("Monthly Page Views (Bar Plot)")
+fig_bar = draw_bar_plot()
+st.pyplot(fig_bar)
+
+# 3. Draw Box Plot
+st.header("Year and Month Trend (Box Plot)")
+fig_box = draw_box_plot()
+st.pyplot(fig_box)
